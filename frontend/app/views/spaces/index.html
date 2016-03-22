@@ -1,0 +1,11 @@
+<p ng-show="!user.id"><a ng-href="views/user_sessions/new.html">Sign in</a></p> 
+<p ng-show="user.id"><a ng-click='signOut()'>Sign out</a></p>
+
+<h3> Space Details: </h3>
+
+<div ng-repeat="space in spaces">
+	<a id="{{space.name}}" href="#/views/spaces/{{space.id}}">  
+		<p> ID: {{space.id}} Name: {{space.name}}</a>
+		<p> Description: {{space.description}} Price:{{space.price}}</p>
+	</div>
+	<a id='create_space'href='#/views/forms'>Create Space</a>
