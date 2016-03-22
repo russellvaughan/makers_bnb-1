@@ -7,6 +7,12 @@ angular.module('makersbnb', [
 	'makersbnb.editspace',
 	'makersbnb.deletespace'
 	]).
+
 config(['$routeProvider', function($routeProvider) {
-	$routeProvider.otherwise({redirectTo: '/views/spaces/index/'});
+	$routeProvider
+	.when('/views/login',{
+		templateUrl: 'views/login.html',
+		controller:'LoginController'
+	})
+	.otherwise({redirectTo: '/views/spaces/index/'});
 }]);

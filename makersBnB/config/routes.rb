@@ -1,4 +1,9 @@
-Rails.application.routes.draw do
+ Rails.application.routes.draw do
+  devise_for :users, skip: [ :sessions ]
+    as :user do 
+      post '/api/login' => 'sessions#create'
+    end 
+  
   resources :spaces
   resources :spaces, only: [:index]
   match '*any' => 'application#options', :via => [:options]
