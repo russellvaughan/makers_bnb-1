@@ -4,6 +4,14 @@ class ApplicationController < ActionController::Base
 
   before_filter :add_allow_credentials_headers
 
+def authenticate_user_from_token!
+  token = request.headers["token"].presence
+  user = token && User.find_by_authentication_token(token.to_s)
+  if user
+    sign_in user, store: false
+  end
+end
+
 def add_allow_credentials_headers
   # https://developer.mozilla.org/en-US/docs/Web/HTTP/Access_control_CORS#section_5
   #

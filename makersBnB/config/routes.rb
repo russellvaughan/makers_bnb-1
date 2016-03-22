@@ -6,6 +6,7 @@
   
   resources :spaces
   resources :spaces, only: [:index]
+  resources :users, only: [:index]
   match '*any' => 'application#options', :via => [:options]
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
