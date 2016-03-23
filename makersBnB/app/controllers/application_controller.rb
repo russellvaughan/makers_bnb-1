@@ -9,7 +9,7 @@ def authenticate_user_from_token!
   user = token && User.find_by_authentication_token(token.to_s)
   if user
     sign_in user, store: false
-  end
+  end 
 end
 
 def add_allow_credentials_headers

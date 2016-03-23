@@ -1,4 +1,10 @@
-<h3> Space Details: </h3>
+
+
+<form id="logout" ng-show="isLoggedIn" ng-click="logout()">
+<input type="submit" value="Logout" ></input>
+</form> 	
+ 
+<h3> Space Details: </h3> 
 
 <div ng-repeat="space in spaces">
 	<a id="{{space.name}}" href="#/views/spaces/{{space.id}}">  

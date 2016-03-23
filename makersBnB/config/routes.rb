@@ -1,12 +1,13 @@
- Rails.application.routes.draw do
+  Rails.application.routes.draw do
   devise_for :users, skip: [ :sessions ]
     as :user do 
       post '/api/login' => 'sessions#create'
+      delete '/api/logout' => 'sessions#destroy'
     end 
   
   resources :spaces
   resources :spaces, only: [:index]
-  resources :users, only: [:index]
+  resources :users , only: [:index]
   match '*any' => 'application#options', :via => [:options]
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

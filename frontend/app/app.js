@@ -8,7 +8,7 @@ angular.module('makersbnb', [
 	'makersbnb.deletespace'
 	])
 
-.factory('authInterceptor', function() {
+.factory('authInterceptor', function($q, $location) {
 	return {
 	request: function(config){
 		config.headers = config.headers || {};
@@ -16,7 +16,13 @@ angular.module('makersbnb', [
 				config.headers.token = localStorage.auth_token;
 			}	
 			return config;
-	}
+	},
+	responseError: function(response) {
+	if (response.status === 401) {
+		$location.path('views/login');
+		}
+	return $q.reject(response);
+ }
 }
 })
 
