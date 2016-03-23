@@ -10,7 +10,7 @@ angular.module('makersbnb.viewspaces', ['ngRoute'])
 }])
 
 
-.controller('SpacesCtrl', ["$scope","$http","ViewSpaceService","auth", function($scope, $http, ViewSpaceService, auth) {
+.controller('SpacesCtrl', ["$scope","$http","ViewSpaceService","auth","$location",function($scope, $http, ViewSpaceService, auth, $location) {
 
   ViewSpaceService.getSpace().then(function(data) {
        $scope.spaces = data;
@@ -22,7 +22,7 @@ angular.module('makersbnb.viewspaces', ['ngRoute'])
   		var promise = auth.logout();
   		promise.then(function(){
   			localStorage.removeItem('auth_token');
-  			$location.path('/login');
+  			$location.path('views/login');
   		});
   	};
 

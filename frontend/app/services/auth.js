@@ -4,7 +4,7 @@ angular.module('makersbnb').service('auth', function($http) {
 	};
 
 	this.logout = function(){
-		return $http.delete('http://localhost:3000/api/logout');
+		return $http.delete('http://localhost:3000/api/logout.json');
 	}
 	this.isLoggedIn = function(){
 		return (localStorage.getItem('auth_token')) ? true: false;
